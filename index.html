@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Russian Grammar Exercises</title>
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🪆</text></svg>">
@@ -16,14 +17,19 @@ body {
 }
 
 .centered-title {
-        position: absolute;
-        top: 25%;
-        left: 50%;
-        -moz-transform: translateX(-50%) translateY(-25%);
-        -webkit-transform: translateX(-50%) translateY(-25%);
-        transform: translateX(-50%) translateY(-25%);
-        color: white;
-  }
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	-moz-transform: translateX(-50%) translateY(-20%);
+	-webkit-transform: translateX(-50%) translateY(-20%);
+	transform: translateX(-50%) translateY(-20%);
+	color: white;
+}
+
+#information {
+	color: white;
+	font-size: 38px;
+}
 </style>
 
 <body>
@@ -50,13 +56,18 @@ body {
 
     <div class="d-flex flex-column justify-content-center align-items-center vh-100">
         <div class="row">
-            <div class="col" style="color: white; font-size: 24">Question</div>
+            <div class="col" id="information">Question: </div>
         </div>
+    	</br>
         <div class="row">
-            <div class="col" style="color: white; font-size: 24">Answer</div>
+            <input class="form-control" type="text" placeholder="Answer">
+            <button type="button" class="btn btn-outline-info">Check</button>
+        </div>
+        </br>
+        <div class="row">
+            <div class="col" id="information">Result: </div>
         </div>
     </div>
-
 </body>
 
 </html>
