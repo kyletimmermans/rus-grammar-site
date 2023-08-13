@@ -26,6 +26,7 @@ const generateRandomVerbSelection = (data) => {
   }
 
   let cyrillicPronoun;
+  console.log(proNoun);
   switch(proNoun) {
   	case "ya":
   		cyrillicPronoun = "Я";
@@ -33,7 +34,10 @@ const generateRandomVerbSelection = (data) => {
   	case "ty":
   		cyrillicPronoun = "Ты";
   		break;
-  	case "m" || proNoun == "on":
+  	case "m":
+  		cyrillicPronoun = "Он";
+  		break;
+  	case "on":
   		cyrillicPronoun = "Он";
   		break;
   	case "my":
@@ -48,13 +52,18 @@ const generateRandomVerbSelection = (data) => {
   	case "n":
   		cyrillicPronoun = "Оно";
   		break;
-  	case "p" || proNoun == "oni":
+  	case "p":
+  		cyrillicPronoun = "Они";
+  		break;
+  	case "oni":
   		cyrillicPronoun = "Они";
   		break;
   }
 
   // Return type [infinitive, tense, pronoun, conjugated verb, translation]
-  return [randomVerb.name, conjType, cyrillicPronoun, randomVerb.conjugations[conjType][proNoun], randomVerb.translation];
+  return [randomVerb.name, conjType, cyrillicPronoun,
+  		  randomVerb.conjugations[conjType][proNoun],
+  		  randomVerb.translation];
 }
 
 const verb = () => {
@@ -74,7 +83,10 @@ const verb = () => {
 			while (question[3] == "-") {
 				question = generateRandomVerbSelection(jsonVerb);
 			}
-			document.getElementById("question").textContent =  "Question: "+question[2]+" ____"+" ("+question[0]+" - \""+question[4]+"\") "+"("+question[1]+")";
+			document.getElementById("question").textContent =  "Question: "
+															   +question[2]+" ____"+" ("
+															   +question[0]+" - \""+question[4]
+															   +"\") "+"("+question[1]+")";
 			correctAnswer = question[3];	
     });
     } else { // If already fetched
@@ -83,7 +95,10 @@ const verb = () => {
 		while (question[3] == "-") {
 			question = generateRandomVerbSelection(jsonVerb);
 		}
-		document.getElementById("question").textContent = "Question: "+question[2]+" ____"+" ("+question[0]+" - \""+question[4]+"\") "+"("+question[1]+")";
+		document.getElementById("question").textContent =  "Question: "
+														   +question[2]+" ____"+" ("
+														   +question[0]+" - \""+question[4]
+														   +"\") "+"("+question[1]+")";
 		correctAnswer = question[3];
     }
 };
@@ -127,16 +142,18 @@ const comparative = () => {
 
 const checkAnswer = () => {
 	let answer = document.getElementById("inputAnswer").value.toLowerCase();
-	if (answer.replace(/\s/g, '') == correctAnswer) {
+	if (answer.replace(/\s/g, '') == correctAnswer.toLowerCase()) {
 		document.getElementById("result").innerHTML = "Result: <span style='color: green;'>Correct!</span>";
 	} else {
-		document.getElementById("result").innerHTML = "Result: <span style='color: red;'>Incorrect - "+correctAnswer+"</span>";
+		document.getElementById("result").innerHTML = "Result: <span style='color: red;'>Incorrect - "
+													  +correctAnswer+"</span>";
 	}
 
 	// Wait 5 seconds for user to read corrected answer, then reset
 	setTimeout(() => {
-		// Reset Result
+		// Reset Result and input answer field
 		document.getElementById("result").innerHTML = "Result: ";
+		document.getElementById("inputAnswer").value = "";
 
 		// Find out which exercise we need to get a new question from
 		// By looking at the current title that we set
@@ -172,7 +189,7 @@ const checkAnswer = () => {
 				break;
 			default:
 				verb();
-				console.error("Something went wrong in the check answer func!");
+				console.error("Something went wrong in checkAnswer()!");
 		}
 	}, 5000);
 };
