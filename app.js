@@ -1,7 +1,7 @@
 // Keep track of JSON information
-var jsonVerb, jsonSingNoun, jsonPlurNoun, jsonSingAdj;
-var jsonPlurAdj, jsonPronoun, jsonPossess, jsonDemonst;
-var jsonCompare, fetchList = [];
+var jsonVerb, jsonNoun, jsonAdj;
+var jsonPronoun, jsonPossess, jsonDemonst;
+var jsonCompare, correctAnswer, fetchList = [];
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -74,8 +74,17 @@ const verb = () => {
 			while (question[3] == "-") {
 				question = generateRandomVerbSelection(jsonVerb);
 			}
-			document.getElementById("question").textContent += question[2]+" ____"+" ("+question[0]+" - "+question[4]+") "+"("+question[1]+")";	
+			document.getElementById("question").textContent =  "Question: "+question[2]+" ____"+" ("+question[0]+" - \""+question[4]+"\") "+"("+question[1]+")";
+			correctAnswer = question[3];	
     });
+    } else { // If already fetched
+		// Possibly no data like present tense быть
+		let question = generateRandomVerbSelection(jsonVerb);
+		while (question[3] == "-") {
+			question = generateRandomVerbSelection(jsonVerb);
+		}
+		document.getElementById("question").textContent = "Question: "+question[2]+" ____"+" ("+question[0]+" - \""+question[4]+"\") "+"("+question[1]+")";
+		correctAnswer = question[3];
     }
 };
 
@@ -117,38 +126,53 @@ const comparative = () => {
 };
 
 const checkAnswer = () => {
-	currExerciseType = document.querySelector(".centered-title").textContent;
-
-	switch(currExerciseType) {
-		case "Verb Conjugations":
-			verb();
-			break;
-		case "Singular Noun Cases":
-			singNoun();
-			break;
-		case "Plural Noun Cases":
-			plurNoun();
-			break;
-		case "Singular Adjective Cases":
-			singAdj();
-			break;
-		case "Plural Adjective Cases":
-			plurAdj();
-			break;
-		case "Pronoun Cases":
-			pronoun();
-			break;
-		case "Possesive Pronoun Cases":
-			possesive();
-			break;
-		case "Demonstrative (& Весь) Cases":
-			demonstrative();
-			break;
-		case "Comparative Creation":
-			comparative();
-			break;
-		default:
-			verb();
-			console.error("Something went wrong in the check answer func!");
+	let answer = document.getElementById("inputAnswer").value.toLowerCase();
+	if (answer.replace(/\s/g, '') == correctAnswer) {
+		document.getElementById("result").innerHTML = "Result: <span style='color: green;'>Correct!</span>";
+	} else {
+		document.getElementById("result").innerHTML = "Result: <span style='color: red;'>Incorrect - "+correctAnswer+"</span>";
 	}
+
+	// Wait 5 seconds for user to read corrected answer, then reset
+	setTimeout(() => {
+		// Reset Result
+		document.getElementById("result").innerHTML = "Result: ";
+
+		// Find out which exercise we need to get a new question from
+		// By looking at the current title that we set
+		currExerciseType = document.querySelector(".centered-title").textContent;
+
+		switch(currExerciseType) {
+			case "Verb Conjugations":
+				verb();
+				break;
+			case "Singular Noun Cases":
+				singNoun();
+				break;
+			case "Plural Noun Cases":
+				plurNoun();
+				break;
+			case "Singular Adjective Cases":
+				singAdj();
+				break;
+			case "Plural Adjective Cases":
+				plurAdj();
+				break;
+			case "Pronoun Cases":
+				pronoun();
+				break;
+			case "Possesive Pronoun Cases":
+				possesive();
+				break;
+			case "Demonstrative (& Весь) Cases":
+				demonstrative();
+				break;
+			case "Comparative Creation":
+				comparative();
+				break;
+			default:
+				verb();
+				console.error("Something went wrong in the check answer func!");
+		}
+	}, 5000);
 };
