@@ -14,7 +14,7 @@ function getRandomString(arr) {
 
 const generateRandomVerbSelection = (data) => {
   let randomVerb = data.verb[getRandomInt(0, data.verb.length - 1)];
-  let conjType = getRandomString(['normal', 'past', 'imperative']);
+  let conjType = getRandomString(['present', 'past', 'imperative']);
   let proNoun;
 
   if (conjType == "imperative") {
@@ -53,8 +53,8 @@ const generateRandomVerbSelection = (data) => {
   		break;
   }
 
-  // Return type [infinitive, tense, pronoun, conjugated verb]
-  return [randomVerb.name, conjType, cyrllicPronoun, randomVerb.conjugations[conjType][proNoun]];
+  // Return type [infinitive, tense, pronoun, conjugated verb, translation]
+  return [randomVerb.name, conjType, cyrillicPronoun, randomVerb.conjugations[conjType][proNoun], randomVerb.translation];
 }
 
 const verb = () => {
@@ -63,19 +63,20 @@ const verb = () => {
 	if (fetchList.includes('verb') == false) {
 	    fetch('./wordbank/verbs.json')
 	      .then(response => response.json())
-	      .then(data => { 
-	      	var jsonVerb = data;
-	      	fetchList.push('verb');
-	    }).catch(error => console.error('Error loading JSON:', error))
+	      .then(data => {
+	      	jsonVerb = data;
+	    })
+	    .catch(error => console.error('Error loading JSON:', error))
+        .finally(() => {
+            fetchList.push('verb');
+		    // Possibly no data like present tense быть
+			let question = generateRandomVerbSelection(jsonVerb);
+			while (question[3] == "-") {
+				question = generateRandomVerbSelection(jsonVerb);
+			}
+			document.getElementById("question").textContent += question[2]+" ____"+" ("+question[0]+" - "+question[4]+") "+"("+question[1]+")";	
+    });
     }
-
-    // Possibly no data like present tense быть
-	let question = generateRandomVerbSelection(jsonVerb);
-	while (option == "-") {
-		question = generateRandomVerbSelection(jsonVerb);
-	}
-
-	document.querySelector(".question").textContent += ;	
 };
 
 // Start with verbs on site load
@@ -148,6 +149,6 @@ const checkAnswer = () => {
 			break;
 		default:
 			verb();
-			console.err("Something went wrong in the check answer func!");
+			console.error("Something went wrong in the check answer func!");
 	}
 };
