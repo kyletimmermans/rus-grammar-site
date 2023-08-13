@@ -5,7 +5,7 @@
       "translation": "to be",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "-",
           "ty": "-",
           "on": "-",
@@ -30,7 +30,7 @@
       "translation": "to have",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "имею",
           "ty": "имеешь",
           "on": "имеет",
@@ -55,7 +55,7 @@
       "translation": "to do / to make",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "делаю",
           "ty": "делаешь",
           "on": "делает",
@@ -80,7 +80,7 @@
       "translation": "to do / to make",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "сделаю",
           "ty": "сделаешь",
           "on": "сделает",
@@ -105,7 +105,7 @@
       "translation": "to speak / to talk",
       "form": "imperfect",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "говорю",
           "ty": "говоришь",
           "on": "говорит",
@@ -130,7 +130,7 @@
       "translation": "to say / to tell",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "скажу",
           "ty": "скажешь",
           "on": "скажет",
@@ -155,7 +155,7 @@
       "translation": "to know",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "знаю",
           "ty": "знаешь",
           "on": "знает",
@@ -180,7 +180,7 @@
       "translation": "to learn / to find out / to recognize",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "узнаю",
           "ty": "узнаешь",
           "on": "узнает",
@@ -205,7 +205,7 @@
       "translation": "to see",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "вижу",
           "ty": "видишь",
           "on": "видит",
@@ -230,7 +230,7 @@
       "translation": "to see",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "увижу",
           "ty": "увидишь",
           "on": "увидит",
@@ -255,7 +255,7 @@
       "translation": "to go (on foot)",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "иду",
           "ty": "идёшь",
           "on": "идёт",
@@ -280,7 +280,7 @@
       "translation": "to go (on foot)",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "пойду",
           "ty": "пойдёшь",
           "on": "пойдёт",
@@ -305,7 +305,7 @@
       "translation": "to become",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "стану",
           "ty": "станешь",
           "on": "станет",
@@ -330,7 +330,7 @@
       "translation": "to come",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "прихожу",
           "ty": "приходишь",
           "on": "приходит",
@@ -355,7 +355,7 @@
       "translation": "to come / to arrive",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "приду",
           "ty": "придёшь",
           "on": "придёт",
@@ -380,7 +380,7 @@
       "translation": "to want",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "хочу",
           "ty": "хочешь",
           "on": "хочет",
@@ -405,7 +405,7 @@
       "translation": "to work",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "работаю",
           "ty": "работаешь",
           "on": "работает",
@@ -430,7 +430,7 @@
       "translation": "to think",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "думаю",
           "ty": "думаешь",
           "on": "думает",
@@ -455,7 +455,7 @@
       "translation": "to walk / to stroll",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "гуляю",
           "ty": "гуляешь",
           "on": "гуляет",
@@ -480,7 +480,7 @@
       "translation": "to live",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "живу",
           "ty": "живёшь",
           "on": "живёт",
@@ -505,7 +505,7 @@
       "translation": "to love",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "люблю",
           "ty": "любишь",
           "on": "любит",
@@ -530,7 +530,7 @@
       "translation": "to tell / to narrate",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "рассказываю",
           "ty": "рассказываешь",
           "on": "рассказывает",
@@ -555,7 +555,7 @@
       "translation": "to look / to watch",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "смотрю",
           "ty": "смотришь",
           "on": "смотрит",
@@ -580,7 +580,7 @@
       "translation": "to look / to watch",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "посмотрю",
           "ty": "посмотришь",
           "on": "посмотрит",
@@ -605,7 +605,7 @@
       "translation": "to listen",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "слушаю",
           "ty": "слушаешь",
           "on": "слушает",
@@ -630,7 +630,7 @@
       "translation": "to listen",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "послушаю",
           "ty": "послушаешь",
           "on": "послушает",
@@ -655,7 +655,7 @@
       "translation": "to ask",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "спрашиваю",
           "ty": "спрашиваешь",
           "on": "спрашивает",
@@ -680,7 +680,7 @@
       "translation": "to ask",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "спрошу",
           "ty": "спросишь",
           "on": "спросит",
@@ -705,7 +705,7 @@
       "translation": "to begin / to start",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "начинаю",
           "ty": "начинаешь",
           "on": "начинает",
@@ -730,7 +730,7 @@
       "translation": "to begin / to start",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "начну",
           "ty": "начнёшь",
           "on": "начнёт",
@@ -755,7 +755,7 @@
       "translation": "to read",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "читаю",
           "ty": "читаешь",
           "on": "читает",
@@ -780,7 +780,7 @@
       "translation": "to read",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "прочитаю",
           "ty": "прочитаешь",
           "on": "прочитает",
@@ -805,7 +805,7 @@
       "translation": "to learn / to teach",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "учу",
           "ty": "учишь",
           "on": "учит",
@@ -830,7 +830,7 @@
       "translation": "to learn by heart / to memorize",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "выучу",
           "ty": "выучишь",
           "on": "выучит",
@@ -855,7 +855,7 @@
       "translation": "to become / to happen",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "делаюсь",
           "ty": "делаешься",
           "on": "делается",
@@ -880,7 +880,7 @@
       "translation": "to become / to happen",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "сделаюсь",
           "ty": "сделаешься",
           "on": "сделается",
@@ -905,7 +905,7 @@
       "translation": "to give",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "даю",
           "ty": "даёшь",
           "on": "даёт",
@@ -930,7 +930,7 @@
       "translation": "to give",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "дам",
           "ty": "дашь",
           "on": "даст",
@@ -955,7 +955,7 @@
       "translation": "to understand",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "понимаю",
           "ty": "понимаешь",
           "on": "понимает",
@@ -980,7 +980,7 @@
       "translation": "to understand",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "пойму",
           "ty": "поймёшь",
           "on": "поймёт",
@@ -1005,7 +1005,7 @@
       "translation": "to take",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "беру",
           "ty": "берёшь",
           "on": "берёт",
@@ -1030,7 +1030,7 @@
       "translation": "to take",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "возьму",
           "ty": "возьмёшь",
           "on": "возьмёт",
@@ -1055,7 +1055,7 @@
       "translation": "to stand",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "стою",
           "ty": "стоишь",
           "on": "стоит",
@@ -1080,7 +1080,7 @@
       "translation": "to stand up",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "встану",
           "ty": "встанешь",
           "on": "встанет",
@@ -1105,7 +1105,7 @@
       "translation": "to wait",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "жду",
           "ty": "ждёшь",
           "on": "ждёт",
@@ -1130,7 +1130,7 @@
       "translation": "to wait (for a while)",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "подожду",
           "ty": "подождешь",
           "on": "подождет",
@@ -1155,7 +1155,7 @@
       "translation": "to remain / to stay",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "остаюсь",
           "ty": "остаешься",
           "on": "остается",
@@ -1180,7 +1180,7 @@
       "translation": "to remain / to stay",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "останусь",
           "ty": "останешься",
           "on": "останется",
@@ -1205,7 +1205,7 @@
       "translation": "to play",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "играю",
           "ty": "играешь",
           "on": "играет",
@@ -1230,7 +1230,7 @@
       "translation": "to show",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "показываю",
           "ty": "показываешь",
           "on": "показывает",
@@ -1255,7 +1255,7 @@
       "translation": "to show",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "покажу",
           "ty": "покажешь",
           "on": "покажет",
@@ -1280,7 +1280,7 @@
       "translation": "to be engaged in / to occupy oneself with",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "занимаюсь",
           "ty": "занимаешься",
           "on": "занимается",
@@ -1305,7 +1305,7 @@
       "translation": "to begin doing / to occupy oneself with",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "займусь",
           "ty": "займёшься",
           "on": "займётся",
@@ -1330,7 +1330,7 @@
       "translation": "to sleep",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "сплю",
           "ty": "спишь",
           "on": "спит",
@@ -1355,7 +1355,7 @@
       "translation": "to sleep",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "посплю",
           "ty": "поспишь",
           "on": "поспит",
@@ -1380,7 +1380,7 @@
       "translation": "to hear",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "слышу",
           "ty": "слышишь",
           "on": "слышит",
@@ -1405,7 +1405,7 @@
       "translation": "to hear",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "услышу",
           "ty": "услышишь",
           "on": "услышит",
@@ -1430,7 +1430,7 @@
       "translation": "to go / to ride (by vehicle)",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "еду",
           "ty": "едешь",
           "on": "едет",
@@ -1455,7 +1455,7 @@
       "translation": "to go / to ride (by vehicle)",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "поеду",
           "ty": "поедешь",
           "on": "поедет",
@@ -1480,7 +1480,7 @@
       "translation": "to remember",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "помню",
           "ty": "помнишь",
           "on": "помнит",
@@ -1505,7 +1505,7 @@
       "translation": "to remember / to recall",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "вспомню",
           "ty": "вспомнишь",
           "on": "вспомнит",
@@ -1530,7 +1530,7 @@
       "translation": "to hold / to keep",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "держу",
           "ty": "держишь",
           "on": "держит",
@@ -1555,7 +1555,7 @@
       "translation": "to sit",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "сижу",
           "ty": "сидишь",
           "on": "сидит",
@@ -1580,7 +1580,7 @@
       "translation": "to sit down",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "сяду",
           "ty": "сядешь",
           "on": "сядет",
@@ -1605,7 +1605,7 @@
       "translation": "to write",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "пишу",
           "ty": "пишешь",
           "on": "пишет",
@@ -1630,7 +1630,7 @@
       "translation": "to write",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "напишу",
           "ty": "напишешь",
           "on": "напишет",
@@ -1655,7 +1655,7 @@
       "translation": "to finish / to end",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "закончу",
           "ty": "закончишь",
           "on": "закончит",
@@ -1680,7 +1680,7 @@
       "translation": "to continue",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "продолжаю",
           "ty": "продолжаешь",
           "on": "продолжает",
@@ -1705,7 +1705,7 @@
       "translation": "to return",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "возвращаюсь",
           "ty": "возвращаешься",
           "on": "возвращается",
@@ -1730,7 +1730,7 @@
       "translation": "to return",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "вернусь",
           "ty": "вернешься",
           "on": "вернется",
@@ -1755,7 +1755,7 @@
       "translation": "to believe",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "верю",
           "ty": "веришь",
           "on": "верит",
@@ -1780,7 +1780,7 @@
       "translation": "to believe",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "поверю",
           "ty": "поверишь",
           "on": "поверит",
@@ -1805,7 +1805,7 @@
       "translation": "to visit / to be (sometimes)",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "бываю",
           "ty": "бываешь",
           "on": "бывает",
@@ -1830,7 +1830,7 @@
       "translation": "to pass / to go through",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "пройду",
           "ty": "пройдёшь",
           "on": "пройдёт",
@@ -1855,7 +1855,7 @@
       "translation": "to be pleasing / to like",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "нравлюсь",
           "ty": "нравишься",
           "on": "нравится",
@@ -1880,7 +1880,7 @@
       "translation": "to lead / to guide",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "веду",
           "ty": "ведёшь",
           "on": "ведёт",
@@ -1905,7 +1905,7 @@
       "translation": "to lead / to guide",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "поведу",
           "ty": "поведёшь",
           "on": "поведёт",
@@ -1930,7 +1930,7 @@
       "translation": "to learn",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "учусь",
           "ty": "учишься",
           "on": "учится",
@@ -1955,7 +1955,7 @@
       "translation": "to learn / to become proficient in",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "научусь",
           "ty": "научишься",
           "on": "научится",
@@ -1980,7 +1980,7 @@
       "translation": "to eat",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "ем",
           "ty": "ешь",
           "on": "ест",
@@ -2005,7 +2005,7 @@
       "translation": "to eat",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "съем",
           "ty": "съешь",
           "on": "съест",
@@ -2030,7 +2030,7 @@
       "translation": "can / to be able to",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "могу",
           "ty": "можешь",
           "on": "может",
@@ -2055,7 +2055,7 @@
       "translation": "to walk / to go",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "хожу",
           "ty": "ходишь",
           "on": "ходит",
@@ -2080,7 +2080,7 @@
       "translation": "to drink",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "пью",
           "ty": "пьёшь",
           "on": "пьёт",
@@ -2105,7 +2105,7 @@
       "translation": "to drink",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "выпью",
           "ty": "выпьешь",
           "on": "выпьет",
@@ -2130,7 +2130,7 @@
       "translation": "to ride / to drive",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "езжу",
           "ty": "ездишь",
           "on": "ездит",
@@ -2155,7 +2155,7 @@
       "translation": "to rest / to relax",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "отдыхаю",
           "ty": "отдыхаешь",
           "on": "отдыхает",
@@ -2180,7 +2180,7 @@
       "translation": "to wash",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "мою",
           "ty": "моешь",
           "on": "моет",
@@ -2205,7 +2205,7 @@
       "translation": "to wash",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "помою",
           "ty": "помоешь",
           "on": "помоет",
@@ -2230,7 +2230,7 @@
       "translation": "to help",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "помогаю",
           "ty": "помогаешь",
           "on": "помогает",
@@ -2255,7 +2255,7 @@
       "translation": "to help",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "помогу",
           "ty": "поможешь",
           "on": "поможет",
@@ -2280,7 +2280,7 @@
       "translation": "to study / to learn",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "изучаю",
           "ty": "изучаешь",
           "on": "изучает",
@@ -2305,7 +2305,7 @@
       "translation": "to study / to learn",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "изучу",
           "ty": "изучишь",
           "on": "изучит",
@@ -2330,7 +2330,7 @@
       "translation": "to sing",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "пою",
           "ty": "поёшь",
           "on": "поёт",
@@ -2355,7 +2355,7 @@
       "translation": "to carry / to wear",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "ношу",
           "ty": "носишь",
           "on": "носит",
@@ -2380,7 +2380,7 @@
       "translation": "to put on / to wear",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "надену",
           "ty": "наденешь",
           "on": "наденет",
@@ -2405,7 +2405,7 @@
       "translation": "to find",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "найду",
           "ty": "найдёшь",
           "on": "найдёт",
@@ -2430,7 +2430,7 @@
       "translation": "to dance",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "танцую",
           "ty": "танцуешь",
           "on": "танцует",
@@ -2455,7 +2455,7 @@
       "translation": "to call",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "звоню",
           "ty": "звонишь",
           "on": "звонит",
@@ -2480,7 +2480,7 @@
       "translation": "to call",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "позвоню",
           "ty": "позвонишь",
           "on": "позвонит",
@@ -2505,7 +2505,7 @@
       "translation": "to carry",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "ношу",
           "ty": "носишь",
           "on": "носит",
@@ -2530,7 +2530,7 @@
       "translation": "to buy",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "покупаю",
           "ty": "покупаешь",
           "on": "покупает",
@@ -2555,7 +2555,7 @@
       "translation": "to buy",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "куплю",
           "ty": "купишь",
           "on": "купит",
@@ -2580,7 +2580,7 @@
       "translation": "to lie",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "лежу",
           "ty": "лежишь",
           "on": "лежит",
@@ -2605,7 +2605,7 @@
       "translation": "to lie down",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "лягу",
           "ty": "ляжешь",
           "on": "ляжет",
@@ -2630,7 +2630,7 @@
       "translation": "to stand up",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "встаю",
           "ty": "встаёшь",
           "on": "встаёт",
@@ -2655,7 +2655,7 @@
       "translation": "to stand up",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "встану",
           "ty": "встанешь",
           "on": "встанет",
@@ -2680,7 +2680,7 @@
       "translation": "to prepare / to cook",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "готовлю",
           "ty": "готовишь",
           "on": "готовит",
@@ -2705,7 +2705,7 @@
       "translation": "to prepare / to cook",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "приготовлю",
           "ty": "приготовишь",
           "on": "приготовит",
@@ -2730,7 +2730,7 @@
       "translation": "to attempt",
       "form": "imperfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "пытаюсь",
           "ty": "пытаешься",
           "on": "пытается",
@@ -2755,7 +2755,7 @@
       "translation": "to attempt",
       "form": "perfective",
       "conjugations": {
-        "normal": {
+        "present": {
           "ya": "попытаюсь",
           "ty": "попытаешься",
           "on": "попытается",
