@@ -1,6 +1,6 @@
 // Keep track of JSON information
 var jsonVerb, jsonNoun, jsonAdj, jsonPronoun;
-var jsonQuestion, jsonPossess, jsonDemonst;
+var jsonPossess, jsonDemonst, jsonQuestion;
 var jsonCompare, correctAnswer, fetchList = [];
 
 // Start with verbs on site load
@@ -225,10 +225,63 @@ const randomPossDemo = (data, word) => {
 	}
 }
 
-const randomComparative = (data) => {
+const randomQuestionWord = (data) => {
+    let randomQuestion = data.questionword[getRandomInt(0, data.questionword.length - 1)];
+    let gramcase = getRandomString(['gn', 'dt', 'aca', 'aci', 'in', 'pr']);
+
+    switch (gramcase) {
+        case "gn":
+            finalCase = "Genitive";
+            break;
+        case "dt":
+            finalCase = "Dative";
+            break;
+        case "aca":
+            finalCase = "Accusative Animate";
+            break;
+        case "aci":
+            finalCase = "Accusative";
+            break;
+        case "in":
+            finalCase = "Instrumental";
+            break;
+        case "pr":
+            finalCase = "Prepositional";
+            break;
+    }
+
+    if (randomQuestion.name == "что" || randomQuestion.name == "кто") {
+        if (gramcase == "aca" || gramcase == "aca") {
+            finalCase = "Accusative";
+            gramcase = "ac";
+        }
+
+        return [randomQuestion.name, finalCase,
+                randomQuestion.conjugations[gramcase]]
+    } else {
+        let gender = getRandomString(['m', 'f', 'n', 'p']);
+        let finalGender;
+        switch (gender) {
+            case "m":
+                finalGender = "Masculine";
+                break;
+            case "f":
+                finalGender = "Feminine";
+                break;
+            case "n":
+                finalGender = "Neuter";
+                break;
+            case "p":
+                finalGender = "Plural";
+                break;
+        }
+
+        return [randomQuestion.name, finalGender, finalCase,
+                randomQuestion.conjugations[gender][gramcase]]
+    }
 }
 
-const randomQuestionWord = (data) => {
+const randomComparative = (data) => {
 }
 
 const verb = () => {
@@ -443,7 +496,6 @@ const pronoun = () => {
         .finally(() => {
             fetchList.push('pro');
             let q = randomPronoun(jsonPronoun);
-            console.log(q[2]);
             if (q[2] === undefined || q[2] == 0){
 				document.getElementById("question").innerHTML = q[1]+"<b> "+q[0]+"</b>";
 				// No "(н)"
@@ -529,6 +581,37 @@ const demonstrative = () => {
 
 const questionword = () => {
     document.querySelector(".centered-title").textContent = "Question Word Cases";
+
+    if (fetchList.includes('ques') == false) {
+        fetch('./wordbank/questionwords.json')
+          .then(response => response.json())
+          .then(data => {
+            jsonQuestion = data;
+        })
+        .catch(error => console.error('Error loading JSON:', error))
+        .finally(() => {
+            fetchList.push('ques');
+            let q = randomQuestionWord(jsonQuestion);
+            if (q.length == 3) {
+                document.getElementById("question").innerHTML = q[1]+" <b>"+q[0]+"</b>";
+                correctAnswer = q[2]
+            } else {
+                document.getElementById("question").innerHTML = q[1]+" "+q[2]
+                                                                +" <b>"+q[0]+"</b>"
+                correctAnswer = q[3]
+            }
+        });
+    } else {
+        let q = randomQuestionWord(jsonQuestion);
+        if (q.length == 3) {
+            document.getElementById("question").innerHTML = q[1]+" <b>"+q[0]+"</b>";
+            correctAnswer = q[2]
+        } else {
+            document.getElementById("question").innerHTML = q[1]+" "+q[2]
+                                                            +" <b>"+q[0]+"</b>"
+            correctAnswer = q[3]
+        }
+    }
 };
 
 const comparative = () => {
@@ -580,7 +663,7 @@ const checkAnswer = () => {
 				demonstrative();
 				break;
 			case "Question Word Cases":
-				comparative();
+				questionword();
 				break;
 			case "Comparative Creation":
 				comparative();
