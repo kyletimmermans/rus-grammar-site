@@ -123,7 +123,7 @@ const randomAdjective = (data, amount) => {
 			finalCase = "Accusative Animate";
 			break;
 		case "aci":
-			finalCase = "Accusative Inanimate";
+			finalCase = "Accusative";
 			break;
 		case "in":
 			finalCase = "Instrumental";
@@ -170,6 +170,50 @@ const randomPronoun = (data) => {
 }
 
 const randomPossessive = (data) => {
+	let randomPoss = data.possessive[getRandomInt(0, data.possessive.length - 1)];
+	let gramcase = getRandomString(['gn', 'dt', 'aca', 'aci', 'in', 'pr']);
+	let gender = getRandomString(['m', 'f', 'n', 'p']);
+	let finalCase;
+	let finalGender;
+
+	switch (gramcase) {
+		case "gn":
+			finalCase = "Genitive";
+			break;
+		case "dt":
+			finalCase = "Dative";
+			break;
+		case "aca":
+			finalCase = "Accusative Animate";
+			break;
+		case "aci":
+			finalCase = "Accusative";
+			break;
+		case "in":
+			finalCase = "Instrumental";
+			break;
+		case "pr":
+			finalCase = "Prepositional";
+			break;
+	}
+
+	switch (gender) {
+		case "m":
+			finalGender = "Masculine";
+			break;
+		case "f":
+			finalGender = "Feminine";
+			break;
+		case "n":
+			finalGender = "Neuter";
+			break;
+		case "p":
+			finalGender = "Plural";
+			break;
+	}
+
+	return [randomPoss.name, finalGender, finalCase,
+			randomPoss.conjugations[gramcase][gender]]
 }
 
 const randomDemonstrative = (data) => {
@@ -429,6 +473,27 @@ const pronoun = () => {
 
 const possesive = () => {
     document.querySelector(".centered-title").textContent = "Possesive Pronoun + Сам Cases";
+
+	if (fetchList.includes('poss') == false) {
+	    fetch('./wordbank/possessives+sam.json')
+	      .then(response => response.json())
+	      .then(data => {
+	      	jsonPossess = data;
+	    })
+	    .catch(error => console.error('Error loading JSON:', error))
+        .finally(() => {
+            fetchList.push('poss');
+            let q = randomPossessive(jsonPossess);
+            document.getElementById("question").innerHTML = q[2]+" "+q[1]+" "
+            												+"<b>"+q[0]+"</b>";
+            correctAnswer = q[3];
+        });
+    } else {
+    	    let q = randomPossessive(jsonPossess);
+            document.getElementById("question").innerHTML = q[2]+" "+q[1]+" "
+            												+"<b>"+q[0]+"</b>";
+            correctAnswer = q[3];
+    }
 };
 
 const demonstrative = () => {
