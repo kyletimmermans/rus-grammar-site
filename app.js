@@ -12,7 +12,7 @@ function getRandomString(arr) {
   return arr[randomIndex];
 }
 
-const generateRandomVerbSelection = (data) => {
+const generateRandomVerb = (data) => {
   let randomVerb = data.verb[getRandomInt(0, data.verb.length - 1)];
   let conjType = getRandomString(['present', 'past', 'imperative']);
   let proNoun;
@@ -26,7 +26,6 @@ const generateRandomVerbSelection = (data) => {
   }
 
   let cyrillicPronoun;
-  console.log(proNoun);
   switch(proNoun) {
   	case "ya":
   		cyrillicPronoun = "Я";
@@ -66,6 +65,56 @@ const generateRandomVerbSelection = (data) => {
   		  randomVerb.translation];
 }
 
+const generateRandomNoun = (data, amount) => {
+	let randomNoun = data.noun[getRandomInt(0, data.noun.length - 1)];
+	let gramcase = getRandomString(['gn', 'dt', 'ac', 'in', 'pr']);
+	let finalCase;
+
+	switch (gramcase) {
+		case "gn":
+			finalCase = "Genitive";
+			break;
+		case "dt":
+			finalCase = "Dative";
+			break;
+		case "ac":
+			finalCase = "Accusative";
+			break;
+		case "in":
+			finalCase = "Instrumental";
+			break;
+		case "pr":
+			finalCase = "Prepositional";
+			break;
+	}
+
+	if (amount == "sing") {
+		// nm case of noun, translation, case, gender, animate, final noun
+		return [randomNoun.name, randomNoun.translation, finalCase, 
+				randomNoun.gender, randomNoun.animate,
+				randomNoun.conjugations.s[gramcase]]
+	} else {
+		return [randomNoun.name, randomNoun.translation, finalCase, 
+				randomNoun.gender, randomNoun.animate,
+				randomNoun.conjugations.p[gramcase]]
+	}
+}
+
+const generateRandomAdjective = (data, amount) => {
+}
+
+const generateRandomPronoun = (data) => {
+}
+
+const generateRandomPossesive = (data) => {
+}
+
+const generateRandomDemonstrative = (data) => {
+}
+
+const generateRandomComparative = (data) => {
+}
+
 const verb = () => {
 	document.querySelector(".centered-title").textContent = "Verb Conjugations";
 
@@ -79,9 +128,9 @@ const verb = () => {
         .finally(() => {
             fetchList.push('verb');
 		    // Possibly no data like present tense быть
-			let question = generateRandomVerbSelection(jsonVerb);
+			let question = generateRandomVerb(jsonVerb);
 			while (question[3] == "-") {
-				question = generateRandomVerbSelection(jsonVerb);
+				question = generateRandomVerb(jsonVerb);
 			}
 			document.getElementById("question").textContent =  "Question: "
 															   +question[2]+" ____"+" ("
@@ -91,9 +140,9 @@ const verb = () => {
     });
     } else { // If already fetched
 		// Possibly no data like present tense быть
-		let question = generateRandomVerbSelection(jsonVerb);
+		let question = generateRandomVerb(jsonVerb);
 		while (question[3] == "-") {
-			question = generateRandomVerbSelection(jsonVerb);
+			question = generateRandomVerb(jsonVerb);
 		}
 		document.getElementById("question").textContent =  "Question: "
 														   +question[2]+" ____"+" ("
@@ -109,7 +158,34 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const singNoun = () => {
-    document.querySelector(".centered-title").textContent = "Singular Noun Cases";
+	document.querySelector(".centered-title").textContent = "Singular Noun Cases";
+
+	if (fetchList.includes('noun') == false) {
+	    fetch('./wordbank/nouns.json')
+	      .then(response => response.json())
+	      .then(data => {
+	      	jsonNoun = data;
+	    })
+	    .catch(error => console.error('Error loading JSON:', error))
+        .finally(() => {
+            fetchList.push('noun');
+            let question = generateRandomNoun(jsonNoun, "sing");
+            if (question[4] == true) {
+				document.getElementById("question").textContent = "Question: "+"Singular "+question[2]+" "+question[0]+" (\""+question[1]+"\", "+question[3]+", "+question[4]+")";
+			} else {
+				document.getElementById("question").textContent = "Question: "+"Singular "+question[2]+" "+question[0]+" (\""+question[1]+"\", "+question[3]+")";
+			}	
+			correctAnswer = question[5];	
+    });
+    } else {
+		let question = generateRandomNoun(jsonNoun, "sing");
+        if (question[4] == true) {
+			document.getElementById("question").textContent = "Question: "+"Singular "+question[2]+" "+question[0]+" (\""+question[1]+"\", "+question[3]+", "+question[4]+")";
+		} else {
+			document.getElementById("question").textContent = "Question: "+"Singular "+question[2]+" "+question[0]+" (\""+question[1]+"\", "+question[3]+")";
+		}
+		correctAnswer = question[5];
+    }
 };
 
 const plurNoun = () => {
