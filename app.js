@@ -1,6 +1,6 @@
 // Keep track of JSON information
-var jsonVerb, jsonNoun, jsonAdj;
-var jsonPronoun, jsonPossess, jsonDemonst;
+var jsonVerb, jsonNoun, jsonAdj, jsonPronoun;
+var jsonQuestion, jsonPossess, jsonDemonst;
 var jsonCompare, correctAnswer, fetchList = [];
 
 // Start with verbs on site load
@@ -17,7 +17,7 @@ function getRandomString(arr) {
   return arr[randomIndex];
 }
 
-const generateRandomVerb = (data) => {
+const randomVerb = (data) => {
   let randomVerb = data.verb[getRandomInt(0, data.verb.length - 1)];
   // 60% present, 30% past, 10% imperative
   let conjType = getRandomString(['present', 'present', 'present', 'present', 'present',
@@ -72,7 +72,7 @@ const generateRandomVerb = (data) => {
   		  randomVerb.translation];
 }
 
-const generateRandomNoun = (data, amount) => {
+const randomNoun = (data, amount) => {
 	let randomNoun = data.noun[getRandomInt(0, data.noun.length - 1)];
 	let gramcase = getRandomString(['gn', 'dt', 'ac', 'in', 'pr']);
 	let finalCase;
@@ -101,7 +101,7 @@ const generateRandomNoun = (data, amount) => {
 			randomNoun.conjugations[amount][gramcase]]
 }
 
-const generateRandomAdjective = (data, amount) => {
+const randomAdjective = (data, amount) => {
 	let randomAdj = data.adjective[getRandomInt(0, data.adjective.length - 1)];
 	let gramcase = getRandomString(['gn', 'dt', 'aca', 'aci', 'in', 'pr']);
 	let finalCase;
@@ -138,16 +138,47 @@ const generateRandomAdjective = (data, amount) => {
 			gender, randomAdj.conjugations[gender][gramcase]];
 }
 
-const generateRandomPronoun = (data) => {
+const randomPronoun = (data) => {
+	let randomPronoun = data.pronoun[getRandomInt(0, data.pronoun.length - 1)];
+	let preposition;
+	let gramcase = getRandomString(['gn', 'dt', 'ac', 'in', 'pr']);
+	let finalCase;
+	switch (gramcase) {
+		case "gn":
+			finalCase = "Genitive";
+			break;
+		case "dt":
+			finalCase = "Dative";
+			break;
+		case "ac":
+			finalCase = "Accusative";
+			break;
+		case "in":
+			finalCase = "Instrumental";
+			break;
+		case "pr":
+			finalCase = "Prepositional";
+			break;
+	}
+
+	if (["он / оно", "она", "они"].includes(randomPronoun.name)) {
+		preposition = getRandomInt(0, 1);
+	}
+
+	return [randomPronoun.name, finalCase, preposition,
+			randomPronoun.conjugations[gramcase]]
 }
 
-const generateRandomPossesive = (data) => {
+const randomPossessive = (data) => {
 }
 
-const generateRandomDemonstrative = (data) => {
+const randomDemonstrative = (data) => {
 }
 
-const generateRandomComparative = (data) => {
+const randomComparative = (data) => {
+}
+
+const randomQuestionWord = (data) => {
 }
 
 const verb = () => {
@@ -163,24 +194,24 @@ const verb = () => {
         .finally(() => {
             fetchList.push('verb');
 		    // Possibly no data like present tense быть
-			let q = generateRandomVerb(jsonVerb);
+			let q = randomVerb(jsonVerb);
 			while (q[3] == "-") {
-				q = generateRandomVerb(jsonVerb);
+				q = randomVerb(jsonVerb);
 			}
 			document.getElementById("question").innerHTML =  q[2]+" ____"+" ("
-															   +"<b>"+q[0]+"</b>"+" - \""+q[4]
-															   +"\") "+"("+q[1]+")";
+															 +"<b>"+q[0]+"</b>"+" - \""+q[4]
+															 +"\") "+"("+q[1]+")";
 			correctAnswer = q[3];	
     });
     } else { // If already fetched
 		// Possibly no data like present tense быть
-		let q = generateRandomVerb(jsonVerb);
+		let q = randomVerb(jsonVerb);
 		while (q[3] == "-") {
-			q = generateRandomVerb(jsonVerb);
+			q = randomVerb(jsonVerb);
 		}
 		document.getElementById("question").innerHTML =  q[2]+" ____"+" ("
-														   +"<b>"+q[0]+"</b>"+" - \""+q[4]
-														   +"\") "+"("+q[1]+")";
+														 +"<b>"+q[0]+"</b>"+" - \""+q[4]
+														 +"\") "+"("+q[1]+")";
 		correctAnswer = q[3];
     }
 };
@@ -197,32 +228,32 @@ const singNoun = () => {
 	    .catch(error => console.error('Error loading JSON:', error))
         .finally(() => {
             fetchList.push('noun');
-            let q = generateRandomNoun(jsonNoun, "s");
+            let q = randomNoun(jsonNoun, "s");
             if (q[4] == true) { // Animate or not
 				document.getElementById("question").innerHTML = "Singular "
-																  +q[2]+" "+"<b>"+q[0]+"</b>"
-																  +" (\""+q[1]+"\", "
-																  +q[3]+", animate)";
+																 +q[2]+" "+"<b>"+q[0]+"</b>"
+																 +" (\""+q[1]+"\", "
+																 +q[3]+", animate)";
 			} else {
 				document.getElementById("question").innerHTML = "Singular "
-																  +q[2]+" "+"<b>"+q[0]+"</b>"
-																  +" (\""+q[1]+"\", "
-																  +q[3]+")";
+																 +q[2]+" "+"<b>"+q[0]+"</b>"
+																 +" (\""+q[1]+"\", "
+																 +q[3]+")";
 			}	
 			correctAnswer = q[5];	
     });
     } else {
-		let q = generateRandomNoun(jsonNoun, "s");
+		let q = randomNoun(jsonNoun, "s");
         if (q[4] == true) {
 			document.getElementById("question").innerHTML = "Singular "
-															  +q[2]+" "+"<b>"+q[0]+"</b>"
-															  +" (\""+q[1]+"\", "
-															  +q[3]+", animate)";
+															 +q[2]+" "+"<b>"+q[0]+"</b>"
+															 +" (\""+q[1]+"\", "
+															 +q[3]+", animate)";
 		} else {
 			document.getElementById("question").innerHTML = "Singular "
-															  +q[2]+" "+"<b>"+q[0]+"</b>"
-															  +" (\""+q[1]+"\", "
-															  +q[3]+")";
+															 +q[2]+" "+"<b>"+q[0]+"</b>"
+															 +" (\""+q[1]+"\", "
+															 +q[3]+")";
 		}
 		correctAnswer = q[5];
     }
@@ -240,32 +271,32 @@ const plurNoun = () => {
 	    .catch(error => console.error('Error loading JSON:', error))
         .finally(() => {
             fetchList.push('noun');
-            let q = generateRandomNoun(jsonNoun, "p");
+            let q = randomNoun(jsonNoun, "p");
             if (q[4] == true) {
 				document.getElementById("question").innerHTML = "Plural "
-																  +q[2]+" "+"<b>"+q[0]+"</b>"
-																  +" (\""+q[1]+"\", "
-																  +q[3]+", animate)";
+																 +q[2]+" "+"<b>"+q[0]+"</b>"
+																 +" (\""+q[1]+"\", "
+																 +q[3]+", animate)";
 			} else {
 				document.getElementById("question").innerHTML = "Plural "
-																  +q[2]+" "+"<b>"+q[0]+"</b>"
-																  +" (\""+q[1]+"\", "
-																  +q[3]+")";
+																 +q[2]+" "+"<b>"+q[0]+"</b>"
+																 +" (\""+q[1]+"\", "
+																 +q[3]+")";
 			}	
 			correctAnswer = q[5];	
     });
     } else {
-		let q = generateRandomNoun(jsonNoun, "p");
+		let q = randomNoun(jsonNoun, "p");
         if (q[4] == true) {
 			document.getElementById("question").innerHTML = "Plural "
-															  +q[2]+" "+"<b>"+q[0]+"</b>"
-															  +" (\""+q[1]+"\", "
-															  +q[3]+", animate)";
+															 +q[2]+" "+"<b>"+q[0]+"</b>"
+															 +" (\""+q[1]+"\", "
+															 +q[3]+", animate)";
 		} else {
 			document.getElementById("question").innerHTML = "Plural "
-															  +q[2]+" "+"<b>"+q[0]+"</b>"
-															  +" (\""+q[1]+"\", "
-															  +q[3]+")";
+															 +q[2]+" "+"<b>"+q[0]+"</b>"
+															 +" (\""+q[1]+"\", "
+															 +q[3]+")";
 		}
 		correctAnswer = q[5];
     }
@@ -283,7 +314,7 @@ const singAdj = () => {
 	    .catch(error => console.error('Error loading JSON:', error))
         .finally(() => {
             fetchList.push('adj');
-            let q = generateRandomAdjective(jsonAdj, "s");
+            let q = randomAdjective(jsonAdj, "s");
             let finalGender;
             switch (q[3]) {
             	case "m":
@@ -302,7 +333,7 @@ const singAdj = () => {
 			correctAnswer = q[4];	
     });
     } else {
-		let q = generateRandomAdjective(jsonAdj, "s");
+		let q = randomAdjective(jsonAdj, "s");
 	    let finalGender;
         switch (q[3]) {
         	case "m":
@@ -334,14 +365,14 @@ const plurAdj = () => {
 	    .catch(error => console.error('Error loading JSON:', error))
         .finally(() => {
             fetchList.push('adj');
-            let q = generateRandomAdjective(jsonAdj, "p");
+            let q = randomAdjective(jsonAdj, "p");
 			document.getElementById("question").innerHTML = "Plural "+q[2]+" "
 															 +"<b>"+q[0]+"</b>"
 															 +" (\""+q[1]+"\")";
 			correctAnswer = q[4];	
     });
     } else {
-		let q = generateRandomAdjective(jsonAdj, "p");
+		let q = randomAdjective(jsonAdj, "p");
 		document.getElementById("question").innerHTML = "Plural "+q[2]+" "
 														 +"<b>"+q[0]+"</b>"
 														 +" (\""+q[1]+"\")";
@@ -351,14 +382,61 @@ const plurAdj = () => {
 
 const pronoun = () => {
     document.querySelector(".centered-title").textContent = "Pronoun Cases";
+
+	if (fetchList.includes('pro') == false) {
+	    fetch('./wordbank/pronouns.json')
+	      .then(response => response.json())
+	      .then(data => {
+	      	jsonPronoun = data;
+	    })
+	    .catch(error => console.error('Error loading JSON:', error))
+        .finally(() => {
+            fetchList.push('pro');
+            let q = randomPronoun(jsonPronoun);
+            console.log(q[2]);
+            if (q[2] === undefined || q[2] == 0){
+				document.getElementById("question").innerHTML = q[1]+"<b> "+q[0]+"</b>";
+				// No "(н)"
+				if (q[3].substring(0, 3) == "(н)") {
+					correctAnswer = q[3].slice(3);
+				} else {
+					correctAnswer = q[3];
+				}
+			} else if (q[2] == 1) {
+				document.getElementById("question").innerHTML = q[1]+"<b> "+q[0]+"</b>"
+																+" (After preposition)";
+				// Remove parenthesis from (н)
+				correctAnswer = q[3].replace(/\(|\)/g, "");					
+			}
+    });
+    } else {
+		let q = randomPronoun(jsonPronoun);
+        if (q[2] === undefined || q[2] == 0){
+			document.getElementById("question").innerHTML = q[1]+"<b> "+q[0]+"</b>";
+			if (q[3].substring(0, 3) == "(н)") {
+				correctAnswer = q[3].slice(3);
+			} else {
+				correctAnswer = q[3];
+			}	
+		} else if (q[2] == 1) {
+			document.getElementById("question").innerHTML = q[1]+"<b> "+q[0]+"</b>"
+															+" (After preposition)";
+			// Remove parenthesis from (н)
+			correctAnswer = q[3].replace(/\(|\)/g, "");					
+		}
+    }
 };
 
 const possesive = () => {
-    document.querySelector(".centered-title").textContent = "Possesive Pronoun Cases";
+    document.querySelector(".centered-title").textContent = "Possesive Pronoun + Сам Cases";
 };
 
 const demonstrative = () => {
-    document.querySelector(".centered-title").textContent = "Demonstrative (& Весь) Cases";
+    document.querySelector(".centered-title").textContent = "Demonstrative + Весь Cases";
+};
+
+const questionword = () => {
+    document.querySelector(".centered-title").textContent = "Question Word Cases";
 };
 
 const comparative = () => {
@@ -403,11 +481,14 @@ const checkAnswer = () => {
 			case "Pronoun Cases":
 				pronoun();
 				break;
-			case "Possesive Pronoun Cases":
+			case "Possesive Pronoun + Сам Cases":
 				possesive();
 				break;
-			case "Demonstrative (& Весь) Cases":
+			case "Demonstrative + Весь Cases":
 				demonstrative();
+				break;
+			case "Question Word Cases":
+				comparative();
 				break;
 			case "Comparative Creation":
 				comparative();
