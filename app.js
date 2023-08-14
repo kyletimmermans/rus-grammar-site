@@ -104,8 +104,7 @@ const randomNoun = (data, amount) => {
 const randomAdjective = (data, amount) => {
 	let randomAdj = data.adjective[getRandomInt(0, data.adjective.length - 1)];
 	let gramcase = getRandomString(['gn', 'dt', 'aca', 'aci', 'in', 'pr']);
-	let finalCase;
-	let gender;
+	let finalCase, gender;
 	if (amount == "s") {
 		gender = getRandomString(['m', 'f', 'n']);
 	} else {
@@ -140,9 +139,8 @@ const randomAdjective = (data, amount) => {
 
 const randomPronoun = (data) => {
 	let randomPronoun = data.pronoun[getRandomInt(0, data.pronoun.length - 1)];
-	let preposition;
+	let preposition, finalCase;
 	let gramcase = getRandomString(['gn', 'dt', 'ac', 'in', 'pr']);
-	let finalCase;
 	switch (gramcase) {
 		case "gn":
 			finalCase = "Genitive";
@@ -169,12 +167,18 @@ const randomPronoun = (data) => {
 			randomPronoun.conjugations[gramcase]]
 }
 
-const randomPossessive = (data) => {
-	let randomPoss = data.possessive[getRandomInt(0, data.possessive.length - 1)];
+// Put possessive and demonstrative together
+// Because the functions are basically the same
+const randomPossDemo = (data, word) => {
+	let randomPoss, randomDemo;
+	if (word == "poss") {
+		randomPoss = data.possessive[getRandomInt(0, data.possessive.length - 1)];
+	} else if (word == "demo") {
+		randomDemo = data.demonstrative[getRandomInt(0, data.demonstrative.length - 1)];
+	}
 	let gramcase = getRandomString(['gn', 'dt', 'aca', 'aci', 'in', 'pr']);
 	let gender = getRandomString(['m', 'f', 'n', 'p']);
-	let finalCase;
-	let finalGender;
+	let finalCase, finalGender;
 
 	switch (gramcase) {
 		case "gn":
@@ -212,11 +216,13 @@ const randomPossessive = (data) => {
 			break;
 	}
 
-	return [randomPoss.name, finalGender, finalCase,
-			randomPoss.conjugations[gramcase][gender]]
-}
-
-const randomDemonstrative = (data) => {
+	if (word == "poss") {
+		return [randomPoss.name, finalGender, finalCase,
+				randomPoss.conjugations[gramcase][gender]]
+	} else if (word == "demo") {
+		return [randomDemo.name, finalGender, finalCase,
+				randomDemo.conjugations[gramcase][gender]]
+	}
 }
 
 const randomComparative = (data) => {
@@ -483,13 +489,13 @@ const possesive = () => {
 	    .catch(error => console.error('Error loading JSON:', error))
         .finally(() => {
             fetchList.push('poss');
-            let q = randomPossessive(jsonPossess);
+            let q = randomPossDemo(jsonPossess, "poss");
             document.getElementById("question").innerHTML = q[2]+" "+q[1]+" "
             												+"<b>"+q[0]+"</b>";
             correctAnswer = q[3];
         });
     } else {
-    	    let q = randomPossessive(jsonPossess);
+    	    let q = randomPossDemo(jsonPossess, "poss");
             document.getElementById("question").innerHTML = q[2]+" "+q[1]+" "
             												+"<b>"+q[0]+"</b>";
             correctAnswer = q[3];
@@ -498,6 +504,27 @@ const possesive = () => {
 
 const demonstrative = () => {
     document.querySelector(".centered-title").textContent = "Demonstrative + Весь Cases";
+
+	if (fetchList.includes('demo') == false) {
+	    fetch('./wordbank/demonstratives+ves.json')
+	      .then(response => response.json())
+	      .then(data => {
+	      	jsonDemonst = data;
+	    })
+	    .catch(error => console.error('Error loading JSON:', error))
+        .finally(() => {
+            fetchList.push('demo');
+            let q = randomPossDemo(jsonDemonst, "demo");
+            document.getElementById("question").innerHTML = q[2]+" "+q[1]+" "
+            												+"<b>"+q[0]+"</b>";
+            correctAnswer = q[3];
+        });
+    } else {
+    	    let q = randomPossDemo(jsonDemonst, "demo");
+            document.getElementById("question").innerHTML = q[2]+" "+q[1]+" "
+            												+"<b>"+q[0]+"</b>";
+            correctAnswer = q[3];
+    }
 };
 
 const questionword = () => {
