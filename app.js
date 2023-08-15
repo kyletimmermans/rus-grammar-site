@@ -40,7 +40,7 @@ const randomGender = (plural) => {
 
     return [gender, finalGender];
   } else {
-    let gender = getRandomString(["m", "f", "n", "p"]);
+    let gender = getRandomString(["m", "f", "n"]);
     let finalGender;
 
     switch (gender) {
