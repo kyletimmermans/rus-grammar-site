@@ -19,6 +19,97 @@ function getRandomString(arr) {
   return arr[randomIndex];
 }
 
+const randomGender = (plural) => {
+  if (plural == true) {
+    let gender = getRandomString(["m", "f", "n", "p"]);
+    let finalGender;
+    switch (gender) {
+      case "m":
+        finalGender = "Masculine";
+        break;
+      case "f":
+        finalGender = "Feminine";
+        break;
+      case "n":
+        finalGender = "Neuter";
+        break;
+      case "p":
+        finalGender = "Plural";
+        break;
+    }
+
+    return [gender, finalGender];
+  } else {
+    let gender = getRandomString(["m", "f", "n", "p"]);
+    let finalGender;
+
+    switch (gender) {
+      case "m":
+        finalGender = "Masculine";
+        break;
+      case "f":
+        finalGender = "Feminine";
+        break;
+      case "n":
+        finalGender = "Neuter";
+        break;
+    }
+
+    return [gender, finalGender];
+  }
+};
+
+const randomCase = (animate) => {
+  if (animate == true) {
+    let gramcase = getRandomString(["gn", "dt", "aca", "aci", "in", "pr"]);
+    let finalCase;
+    switch (gramcase) {
+      case "gn":
+        finalCase = "Genitive";
+        break;
+      case "dt":
+        finalCase = "Dative";
+        break;
+      case "aca":
+        finalCase = "Accusative Animate";
+        break;
+      case "aci":
+        finalCase = "Accusative";
+        break;
+      case "in":
+        finalCase = "Instrumental";
+        break;
+      case "pr":
+        finalCase = "Prepositional";
+        break;
+    }
+
+    return [gramcase, finalCase];
+  } else {
+    let gramcase = getRandomString(["gn", "dt", "ac", "in", "pr"]);
+    let finalCase;
+    switch (gramcase) {
+      case "gn":
+        finalCase = "Genitive";
+        break;
+      case "dt":
+        finalCase = "Dative";
+        break;
+      case "ac":
+        finalCase = "Accusative";
+        break;
+      case "in":
+        finalCase = "Instrumental";
+        break;
+      case "pr":
+        finalCase = "Prepositional";
+        break;
+    }
+
+    return [gramcase, finalCase];
+  }
+};
+
 const randomVerb = (data) => {
   let randomVerb = data.verb[getRandomInt(0, data.verb.length - 1)];
   // 60% present, 30% past, 10% imperative
@@ -90,100 +181,44 @@ const randomVerb = (data) => {
 
 const randomNoun = (data, amount) => {
   let randomNoun = data.noun[getRandomInt(0, data.noun.length - 1)];
-  let gramcase = getRandomString(["gn", "dt", "ac", "in", "pr"]);
-  let finalCase;
-
-  switch (gramcase) {
-    case "gn":
-      finalCase = "Genitive";
-      break;
-    case "dt":
-      finalCase = "Dative";
-      break;
-    case "ac":
-      finalCase = "Accusative";
-      break;
-    case "in":
-      finalCase = "Instrumental";
-      break;
-    case "pr":
-      finalCase = "Prepositional";
-      break;
-  }
+  let gramcase = randomCase(false);
 
   // nm case of noun, translation, case, gender, animate, final noun
   return [
     randomNoun.name,
     randomNoun.translation,
-    finalCase,
+    gramcase[1],
     randomNoun.gender,
     randomNoun.animate,
-    randomNoun.conjugations[amount][gramcase],
+    randomNoun.conjugations[amount][gramcase[0]],
   ];
 };
 
 const randomAdjective = (data, amount) => {
   let randomAdj = data.adjective[getRandomInt(0, data.adjective.length - 1)];
-  let gramcase = getRandomString(["gn", "dt", "aca", "aci", "in", "pr"]);
-  let finalCase, gender;
+  let gramcase = randomCase(true);
+  let gender;
   if (amount == "s") {
-    gender = getRandomString(["m", "f", "n"]);
-  } else {
-    gender = "p";
+    gender = randomGender(false);
+  } else { // Put in array so we can always use gender[0]
+    gender = ["p"];
   }
 
-  switch (gramcase) {
-    case "gn":
-      finalCase = "Genitive";
-      break;
-    case "dt":
-      finalCase = "Dative";
-      break;
-    case "aca":
-      finalCase = "Accusative Animate";
-      break;
-    case "aci":
-      finalCase = "Accusative";
-      break;
-    case "in":
-      finalCase = "Instrumental";
-      break;
-    case "pr":
-      finalCase = "Prepositional";
-      break;
-  }
-
-  // nm case of noun, translation, case, gender, animate, final noun
+  // nm case of noun, translation, case, gender, animate, final noun, finalGender
   return [
     randomAdj.name,
     randomAdj.translation,
-    finalCase,
-    gender,
-    randomAdj.conjugations[gender][gramcase],
+    gramcase[1],
+    gender[0],
+    randomAdj.conjugations[gender[0]][gramcase[0]],
+    gender[1]
   ];
 };
 
 const randomPronoun = (data) => {
   let randomPronoun = data.pronoun[getRandomInt(0, data.pronoun.length - 1)];
-  let preposition, finalCase;
-  let gramcase = getRandomString(["gn", "dt", "ac", "in", "pr"]);
-  switch (gramcase) {
-    case "gn":
-      finalCase = "Genitive";
-      break;
-    case "dt":
-      finalCase = "Dative";
-      break;
-    case "ac":
-      finalCase = "Accusative";
-      break;
-    case "in":
-      finalCase = "Instrumental";
-      break;
-    case "pr":
-      finalCase = "Prepositional";
-      break;
-  }
+  let gramcase = randomCase(false);
+  let preposition;
 
   if (["он / оно", "она", "они"].includes(randomPronoun.name)) {
     preposition = getRandomInt(0, 1);
@@ -191,9 +226,9 @@ const randomPronoun = (data) => {
 
   return [
     randomPronoun.name,
-    finalCase,
+    gramcase[1],
     preposition,
-    randomPronoun.conjugations[gramcase],
+    randomPronoun.conjugations[gramcase[0]],
   ];
 };
 
@@ -201,65 +236,30 @@ const randomPronoun = (data) => {
 // Because the functions are basically the same
 const randomPossDemo = (data, word) => {
   let randomPoss, randomDemo;
+
   if (word == "poss") {
     randomPoss = data.possessive[getRandomInt(0, data.possessive.length - 1)];
   } else if (word == "demo") {
     randomDemo =
       data.demonstrative[getRandomInt(0, data.demonstrative.length - 1)];
   }
-  let gramcase = getRandomString(["gn", "dt", "aca", "aci", "in", "pr"]);
-  let gender = getRandomString(["m", "f", "n", "p"]);
-  let finalCase, finalGender;
 
-  switch (gramcase) {
-    case "gn":
-      finalCase = "Genitive";
-      break;
-    case "dt":
-      finalCase = "Dative";
-      break;
-    case "aca":
-      finalCase = "Accusative Animate";
-      break;
-    case "aci":
-      finalCase = "Accusative";
-      break;
-    case "in":
-      finalCase = "Instrumental";
-      break;
-    case "pr":
-      finalCase = "Prepositional";
-      break;
-  }
-
-  switch (gender) {
-    case "m":
-      finalGender = "Masculine";
-      break;
-    case "f":
-      finalGender = "Feminine";
-      break;
-    case "n":
-      finalGender = "Neuter";
-      break;
-    case "p":
-      finalGender = "Plural";
-      break;
-  }
+  let gramcase = randomCase(true);
+  let gender = randomGender(true);
 
   if (word == "poss") {
     return [
       randomPoss.name,
-      finalGender,
-      finalCase,
-      randomPoss.conjugations[gramcase][gender],
+      gender[1],
+      gramcase[1],
+      randomPoss.conjugations[gramcase[0]][gender[0]],
     ];
   } else if (word == "demo") {
     return [
       randomDemo.name,
-      finalGender,
-      finalCase,
-      randomDemo.conjugations[gramcase][gender],
+      gender[1],
+      gramcase[1],
+      randomDemo.conjugations[gramcase[0]][gender[0]],
     ];
   }
 };
@@ -267,63 +267,27 @@ const randomPossDemo = (data, word) => {
 const randomQuestionWord = (data) => {
   let randomQuestion =
     data.questionword[getRandomInt(0, data.questionword.length - 1)];
-  let gramcase = getRandomString(["gn", "dt", "aca", "aci", "in", "pr"]);
-
-  switch (gramcase) {
-    case "gn":
-      finalCase = "Genitive";
-      break;
-    case "dt":
-      finalCase = "Dative";
-      break;
-    case "aca":
-      finalCase = "Accusative Animate";
-      break;
-    case "aci":
-      finalCase = "Accusative";
-      break;
-    case "in":
-      finalCase = "Instrumental";
-      break;
-    case "pr":
-      finalCase = "Prepositional";
-      break;
-  }
+  let gramcase = randomCase(true);
 
   if (randomQuestion.name == "что" || randomQuestion.name == "кто") {
-    if (gramcase == "aca" || gramcase == "aca") {
-      finalCase = "Accusative";
-      gramcase = "ac";
+    if (gramcase[0] == "aca" || gramcase[0] == "aca") {
+      gramcase[1] = "Accusative";
+      gramcase[0] = "ac";
     }
 
     return [
       randomQuestion.name,
-      finalCase,
-      randomQuestion.conjugations[gramcase],
+      gramcase[1],
+      randomQuestion.conjugations[gramcase[0]],
     ];
   } else {
-    let gender = getRandomString(["m", "f", "n", "p"]);
-    let finalGender;
-    switch (gender) {
-      case "m":
-        finalGender = "Masculine";
-        break;
-      case "f":
-        finalGender = "Feminine";
-        break;
-      case "n":
-        finalGender = "Neuter";
-        break;
-      case "p":
-        finalGender = "Plural";
-        break;
-    }
+    let gender = randomGender(true);
 
     return [
       randomQuestion.name,
-      finalGender,
-      finalCase,
-      randomQuestion.conjugations[gender][gramcase],
+      gender[1],
+      gramcase[1],
+      randomQuestion.conjugations[gender[0]][gramcase[0]],
     ];
   }
 };
@@ -470,19 +434,7 @@ const singAdj = () => {
       .finally(() => {
         fetchList.push("adj");
         let q = randomAdjective(jsonAdj, "s");
-        let finalGender;
-        switch (q[3]) {
-          case "m":
-            finalGender = "Masculine";
-            break;
-          case "f":
-            finalGender = "Feminine";
-            break;
-          case "n":
-            finalGender = "Neuter";
-            break;
-        }
-        document.getElementById("question").innerHTML = "Singular "+finalGender+" "+q[2]
+        document.getElementById("question").innerHTML = "Singular "+q[5]+" "+q[2]
                                                         +" <b>"+q[0]+"</b>"+" (\""
                                                         +q[1]+"\")";
 
@@ -490,19 +442,7 @@ const singAdj = () => {
       });
   } else {
     let q = randomAdjective(jsonAdj, "s");
-    let finalGender;
-    switch (q[3]) {
-      case "m":
-        finalGender = "Masculine";
-        break;
-      case "f":
-        finalGender = "Feminine";
-        break;
-      case "n":
-        finalGender = "Neuter";
-        break;
-    }
-    document.getElementById("question").innerHTML = "Singular "+finalGender+" "+q[2]
+    document.getElementById("question").innerHTML = "Singular "+q[5]+" "+q[2]
                                                     +" <b>"+q[0]+"</b>"+" (\""
                                                     +q[1]+"\")";
     correctAnswer = q[4];
