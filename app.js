@@ -329,8 +329,18 @@ const randomQuestionWord = (data) => {
 };
 
 const randomComparative = (data) => {
+  let randomComp =
+    data.comparative[getRandomInt(0, data.comparative.length - 1)];
 
+  return [randomComp.name,
+          randomComp.translation,
+          randomComp.ec,
+          randomComp.c];
 };
+
+
+// Split point from random generators to fetchers \\
+
 
 const verb = () => {
   document.querySelector(".centered-title").textContent = "Verb Conjugations";
@@ -448,8 +458,7 @@ const plurNoun = () => {
 };
 
 const singAdj = () => {
-  document.querySelector(".centered-title").textContent =
-    "Singular Adjective Cases";
+  document.querySelector(".centered-title").textContent = "Singular Adjective Cases";
 
   if (fetchList.includes("adj") == false) {
     fetch("./wordbank/adjectives.json")
@@ -501,8 +510,7 @@ const singAdj = () => {
 };
 
 const plurAdj = () => {
-  document.querySelector(".centered-title").textContent =
-    "Plural Adjective Cases";
+  document.querySelector(".centered-title").textContent = "Plural Adjective Cases";
 
   if (fetchList.includes("adj") == false) {
     fetch("./wordbank/adjectives.json")
@@ -575,8 +583,7 @@ const pronoun = () => {
 };
 
 const possesive = () => {
-  document.querySelector(".centered-title").textContent =
-    "Possesive Pronoun + Сам Cases";
+  document.querySelector(".centered-title").textContent = "Possesive Pronoun + Сам Cases";
 
   if (fetchList.includes("poss") == false) {
     fetch("./wordbank/possessives+sam.json")
@@ -601,8 +608,7 @@ const possesive = () => {
 };
 
 const demonstrative = () => {
-  document.querySelector(".centered-title").textContent =
-    "Demonstrative + Весь Cases";
+  document.querySelector(".centered-title").textContent = "Demonstrative + Весь Cases";
 
   if (fetchList.includes("demo") == false) {
     fetch("./wordbank/demonstratives+ves.json")
@@ -664,6 +670,29 @@ const questionword = () => {
 
 const comparative = () => {
   document.querySelector(".centered-title").textContent = "Comparative Creation";
+
+  if (fetchList.includes("comp") == false) {
+    fetch("./wordbank/comparatives.json")
+      .then((response) => response.json())
+      .then((data) => {
+        jsonCompare = data;
+      })
+      .catch((error) => console.error("Error loading JSON:", error))
+      .finally(() => {
+        fetchList.push("comp");
+        let q = randomComparative(jsonCompare);
+        document.getElementById("question").innerHTML = "<b>"+q[0]+"</b> (\""
+                                                        +q[1]+"\") → ____ (\""
+                                                        +q[2]+"\")";
+        correctAnswer = q[3];
+      });
+  } else {
+    let q = randomComparative(jsonCompare);
+    document.getElementById("question").innerHTML = "<b>"+q[0]+"</b> (\""
+                                                    +q[1]+"\") → ____ (\""
+                                                    +q[2]+"\")"
+    correctAnswer = q[3];
+  }
 };
 
 const checkAnswer = () => {
